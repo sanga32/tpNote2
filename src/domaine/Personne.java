@@ -1,4 +1,4 @@
-package ressource;
+package domaine;
 
 import java.util.ArrayList;
 
