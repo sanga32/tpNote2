@@ -2,7 +2,9 @@ package vue;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,22 +16,36 @@ import controller.ValiderLoginListener;
 
 public class Login extends JPanel{
 
-	public Login(JFrame f){
+	public Login(){
 
 		super();
-		this.setPreferredSize(f.getSize());
-		this.setLayout(new GridLayout(8,8));
+		//this.setPreferredSize(f.getSize());
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = gbc.gridy = 0; // la grille commence en (0, 0)
+		gbc.gridheight = 1; // valeur par défaut - peut s'étendre sur une seule ligne.
+		gbc.gridwidth = 1; // valeur par défaut - peut s'étendre sur une seule ligne.
+		gbc.anchor = GridBagConstraints.PAGE_START; // ou BASELINE_LEADING mais pas WEST.
+		gbc.insets = new Insets(10, 15, 0, 0);
+		gbc.fill = GridBagConstraints.NONE;	
+		
+		
 		JLabel jl = new JLabel("Votre id: ");
 		JTextField id = new JTextField();
 		JButton valider = new JButton("OK");
 		
-		jl.setPreferredSize(new Dimension(50, 80));
-		id.setPreferredSize(new Dimension(120, 80));
-		valider.setPreferredSize(new Dimension(50, 50));
+		jl.setPreferredSize(new Dimension(50, 35));
+		id.setPreferredSize(new Dimension(80, 35));
+		valider.setPreferredSize(new Dimension(80, 35));
 		valider.addActionListener(new ValiderLoginListener(id, this));
-		this.add(jl, BorderLayout.CENTER);
-		this.add(id, BorderLayout.EAST);
-		this.add(valider, BorderLayout.SOUTH);
+		this.add(jl, gbc);
+		
+		gbc.gridx = 1;
+		this.add(id, gbc);
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		gbc.gridwidth = 2;
+		this.add(valider, gbc);
 		
 
 	}

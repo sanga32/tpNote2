@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import controller.AnnulerListener;
 import controller.JListListener;
 import controller.ValiderEvaluationListener;
 import domaine.Personne;
@@ -48,6 +49,8 @@ public class InterfacePersonne extends JPanel {
 		gbc.gridheight = 3;
 		gbc.gridx = 3;
 		gbc.gridy = 0;
+		
+		jb.addActionListener(new AnnulerListener(this));
 		
 		this.add(jb, gbc);
 		
