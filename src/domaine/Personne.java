@@ -80,7 +80,7 @@ public class Personne implements IDomainObject {
 	}
 
 	public Personne getPere() throws SQLException {
-		return pere;
+		return pere.getPere();
 	}
 
 	public void setPere(Personne pere) {

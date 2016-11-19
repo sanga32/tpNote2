@@ -34,6 +34,6 @@ public class VirtualProxyPersonne extends Personne{
 	
 	public Personne getPere() throws SQLException {
 		verifieInitilisation();
-		return personne.getPere();
+		return personne;
 	}
 }
