@@ -16,8 +16,8 @@ public class testProxy {
 		p2.setPere(p1);
 		p1.addFils(p2);
 		System.out.println(p1.getFils().size());
-		PersonneMapper.getInstance().insert(p1);
-		PersonneMapper.getInstance().insert(p2);
+		//PersonneMapper.getInstance().insert(p1);
+		//PersonneMapper.getInstance().insert(p2);
 		System.out.println("affichage");
 		System.out.println(PersonneMapper.getInstance().findById(1).toString());
 		System.out.println(PersonneMapper.getInstance().findById(2).getPere().toString());
