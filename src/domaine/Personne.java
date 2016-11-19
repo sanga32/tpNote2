@@ -82,6 +82,10 @@ public class Personne implements IDomainObject {
 	public Personne getPere() throws SQLException {
 		return pere.getPersonne();
 	}
+	
+	public Personne getPersonne() throws SQLException {
+		return this;
+	}
 
 	public void setPere(Personne pere) {
 		this.pere = pere;
