@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -29,24 +30,40 @@ public class ValiderLoginListener implements ActionListener{
 		Personne p;
 		//PersonneMapper pm = new PersonneMapper();
 		//p = pm.findById(saisieID.getText());
-		
-		p = new Personne(1, "Pat", "Tom", "A chier");
-		p.setPere(new Personne(2, "Bibi", "Jean", "Nul"));
-		List<Personne> l = new ArrayList<Personne>();
-		l.add(new Personne(3, "test", "paul", "Très bien"));
-		l.add(new Personne(4, "second", "pierre", "Très nul"));
+		if ( saisieID.getText().equals("")){
+			JOptionPane jop3 = new JOptionPane();
+			jop3.showMessageDialog(null, "Veuillez entrer un ID", "Message d'erreur",  JOptionPane.ERROR_MESSAGE);
 
-		
-		try {
-			InterfacePersonne ip = new InterfacePersonne(p);
-			j.removeAll();
-			j.add(ip);
-			j.updateUI();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		}else{
+
+			try {
+				
+				int id = Integer.parseInt(saisieID.getText());
+				//Ici a la place on utilisera le mapper 
+				p = new Personne(1, "Pat", "Tom", "A chier");
+				p.setPere(new Personne(2, "Bibi", "Jean", "Nul"));
+				List<Personne> l = new ArrayList<Personne>();
+				p.addFils(new Personne(3, "test", "paul", "Très bien"));
+				p.addFils(new Personne(4, "second", "pierre", "Très nul"));
+
+
+				try {
+					InterfacePersonne ip = new InterfacePersonne(p);
+					j.removeAll();
+					j.add(ip);
+					j.updateUI();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (NumberFormatException e ){
+				JOptionPane jop3 = new JOptionPane();
+				jop3.showMessageDialog(null, "Veuillez entrer un ID correct !", "Message d'erreur",  JOptionPane.ERROR_MESSAGE);
+
+			}
 		}
-		
+
 	}
 
 }

@@ -74,7 +74,7 @@ public class InterfacePersonne extends JPanel {
         Personne filsAModifier = null;
         jl.getSelectionModel().addListSelectionListener(new JListListener(jl, evalFils, this, filsAModifier));
         
-        JScrollPane listScrollPane = new JScrollPane(jl, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        JScrollPane listScrollPane = new JScrollPane(jl, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         gbc.gridy = 4;
 		gbc.gridx = 0;

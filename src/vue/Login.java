@@ -36,6 +36,7 @@ public class Login extends JPanel{
 		
 		jl.setPreferredSize(new Dimension(50, 35));
 		id.setPreferredSize(new Dimension(80, 35));
+		id.addActionListener(new ValiderLoginListener(id, this));
 		valider.setPreferredSize(new Dimension(80, 35));
 		valider.addActionListener(new ValiderLoginListener(id, this));
 		this.add(jl, gbc);
