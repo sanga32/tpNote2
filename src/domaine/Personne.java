@@ -13,7 +13,7 @@ public class Personne implements IDomainObject {
 	String evaluation;
 	Personne pere;
 	ArrayList<Personne> fils;
-	List<Observateur> obs;
+	ArrayList<Observateur> obs;
 
 	public Personne() {
 	}
@@ -24,6 +24,8 @@ public class Personne implements IDomainObject {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.evaluation = evaluation;
+		this.fils = new ArrayList<Personne>();
+		this.obs = new ArrayList<Observateur>();
 	}
 
 	public void addFils(Personne p) {
