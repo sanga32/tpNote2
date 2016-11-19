@@ -32,7 +32,7 @@ public class VirtualProxyPersonne extends Personne{
 		personne = PersonneMapper.getInstance().findById(id_personne);
 	}
 	
-	public Personne getPere() throws SQLException {
+	public Personne getPersonne() throws SQLException {
 		verifieInitilisation();
 		return personne;
 	}
