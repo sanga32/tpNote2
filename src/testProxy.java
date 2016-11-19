@@ -11,6 +11,7 @@ public class testProxy {
 		Personne p2 = new Personne(2,"Kevin","Delporte",null);
 		System.out.println("on ajoute le pere et le fils");
 		p2.setPere(p1);p1.addFils(p2);
+		System.out.println(p1.getFils().size());
 		PersonneMapper.getInstance().insert(p1);
 		PersonneMapper.getInstance().insert(p2);
 		System.out.println("affichage");
