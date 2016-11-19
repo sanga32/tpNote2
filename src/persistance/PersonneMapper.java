@@ -85,12 +85,12 @@ public class PersonneMapper {
 		ps2.setString(1, id);
 		ResultSet rs2 = ps.executeQuery();
 		while(rs2.next()){
-			p.add(new VirtualProxyListPersonne(rs2.getInt(1)));
+			p.addFils(new VirtualProxyListPersonne(rs2.getInt(1)));
 		}
 
 		return p;
 	}
-	
+
 	public List<Personne> getFilsById(String id) throws SQLException {
 		List<Personne> p = new ArrayList<Personne>();
 		return p;
