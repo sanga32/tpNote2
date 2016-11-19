@@ -40,7 +40,16 @@ public class VirtualProxyListPersonne implements List<Personne>{
 
 	@Override
 	public boolean add(Personne e) {
-		personnes.add(e);
+		if (personnes == null) {
+			personnes = new VirtualProxyListPersonne(id_personne);
+			try {
+				initialisation();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		this.personnes.add(e);
 		return true;
 	}
 

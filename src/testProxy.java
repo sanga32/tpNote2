@@ -13,7 +13,8 @@ public class testProxy {
 		p1.add(UnitOfWork.getInstance());
 		p2.add(UnitOfWork.getInstance());
 		System.out.println("on ajoute le pere et le fils");
-		p2.setPere(p1);p1.addFils(p2);
+		p2.setPere(p1);
+		p1.addFils(p2);
 		System.out.println(p1.getFils().size());
 		PersonneMapper.getInstance().insert(p1);
 		PersonneMapper.getInstance().insert(p2);
