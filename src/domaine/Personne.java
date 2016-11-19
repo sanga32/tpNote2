@@ -30,7 +30,8 @@ public class Personne implements IDomainObject {
 		this.prenom = prenom;
 		this.evaluation = evaluation;
 		this.pere = null;
-		this.fils = new VirtualProxyListPersonne();
+		this.fils = new ArrayList<>();
+		//this.fils = new VirtualProxyListPersonne();
 		this.obs = new ArrayList<Observateur>();
 	}
 
@@ -75,7 +76,7 @@ public class Personne implements IDomainObject {
 
 	public void setEvaluation(String evaluation) {
 		this.evaluation = evaluation;
-		notifier();
+		//notifier();
 
 	}
 
