@@ -15,6 +15,7 @@ import settings.Utilisateur;
 public class PersonneMapper {
 	static Connection conn;
 	static PersonneMapper inst;
+
 	public PersonneMapper() {
 		try {
 			conn = DriverManager.getConnection(ConnectionInfo.DB_URL, Utilisateur.COMPTE, Utilisateur.MDP);
@@ -23,7 +24,7 @@ public class PersonneMapper {
 
 		}
 	}
-	
+
 	public static PersonneMapper getInstance() {
 		if (inst == null)
 			inst = new PersonneMapper();
@@ -37,10 +38,23 @@ public class PersonneMapper {
 			ps.setInt(1, p.getId());
 			ps.setString(2, p.getNom());
 			ps.setString(3, p.getPrenom());
-			ps.setString(4, p.getEvaluation());
-			ps.setInt(5, p.getPere().getId());
-		} catch (SQLException e) {
+			if (p.getEvaluation() == null) {
+				ps.setString(3, "");
+			} else {
+				ps.setString(4, p.getEvaluation());
+			}
+			if (p.getPere() == null) {
+				ps.setInt(5, 1);
+			} else {
+				ps.setInt(5, p.getPere().getId());
+			}
+		} catch (
+
+		SQLException e)
+
+		{
 		}
+
 	}
 
 	public void delete(Personne p) {
@@ -70,34 +84,41 @@ public class PersonneMapper {
 		}
 	}
 
-
-	public Personne findById(String id) throws SQLException {
-		//on va chercher la personne
-		String req = "SELECT id, nom, prenom, evaluation, pere  FROM TPNOTE_personne WHERE id=?";
-		PreparedStatement ps = conn.prepareStatement(req);
-		ps.setString(1, id);
-		ResultSet rs = ps.executeQuery();
-		rs.next();
-		Personne p = new Personne();
-		p.setId(rs.getInt(1));
-		p.setNom(rs.getString(2));
-		p.setPrenom(rs.getString(3));
-		p.setEvaluation(rs.getString(4));
-		p.setPere(new VirtualProxyPersonne(rs.getInt(5)));
-		p.setFils(new VirtualProxyListPersonne(Integer.parseInt(id)));
-		return p;
+	public Personne findById(String id) {
+		try {
+			// on va chercher la personne
+			String req = "SELECT id, nom, prenom, evaluation, pere  FROM TPNOTE_personne WHERE id=?";
+			PreparedStatement ps = conn.prepareStatement(req);
+			ps.setString(1, id);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			Personne p = new Personne();
+			p.setId(rs.getInt(1));
+			p.setNom(rs.getString(2));
+			p.setPrenom(rs.getString(3));
+			p.setEvaluation(rs.getString(4));
+			p.setPere(new VirtualProxyPersonne(rs.getInt(5)));
+			p.setFils(new VirtualProxyListPersonne(Integer.parseInt(id)));
+			return p;
+		} catch (SQLException e) {
+		}
+		return null;
 	}
 
-	public List<Personne> getFilsById(String id) throws SQLException {
-		List<Personne> fils = new ArrayList<Personne>();	
-		String req = "SELECT id FROM TPNOTE_personne WHERE pere=?";
-		PreparedStatement ps = conn.prepareStatement(req);
-		ps.setString(1, id);
-		ResultSet rs = ps.executeQuery();
-		while(rs.next()){
-			fils.add(new VirtualProxyPersonne(rs.getInt(1)));
-		}	
-		return fils;
+	public List<Personne> getFilsById(String id) {
+		try {
+			List<Personne> fils = new ArrayList<Personne>();
+			String req = "SELECT id FROM TPNOTE_personne WHERE pere=?";
+			PreparedStatement ps = conn.prepareStatement(req);
+			ps.setString(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				fils.add(new VirtualProxyPersonne(rs.getInt(1)));
+			}
+			return fils;
+		} catch (SQLException e) {
+		}
+		return null;
 	}
 
 }
