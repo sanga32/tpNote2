@@ -105,8 +105,8 @@ public class Personne implements IDomainObject {
 
 	@Override
 	public void notifier() {
-		for (Observateur o : obs)
-			o.action(this);
+		//for (Observateur o : obs)
+			//o.action(this);
 	}
 
 	@Override

@@ -15,6 +15,7 @@ public class VirtualProxyPersonne extends Personne{
 	static Personne personne = null;
 
 	VirtualProxyPersonne(int id_personne) {
+		System.out.println("PROXY PERSONNE");
 		this.id_personne = id_personne;
 	}
 	
@@ -27,11 +28,12 @@ public class VirtualProxyPersonne extends Personne{
 	}
 	
 	public void initialisation() throws SQLException {
+		System.out.println("on va chercher le pere");
 		personne = PersonneMapper.getInstance().findById(String.valueOf(id_personne));
 	}
 	
 	public Personne getPere() throws SQLException {
 		verifieInitilisation();
-		return personne;
+		return personne.getPere();
 	}
 }

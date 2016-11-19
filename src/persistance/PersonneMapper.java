@@ -31,28 +31,28 @@ public class PersonneMapper {
 		return inst;
 	}
 
+	public void clear() {
+		try {
+			String req = "delete from TPNOTE_personne";
+			PreparedStatement ps = conn.prepareStatement(req);
+			ps.execute();
+			conn.commit();
+		} catch (SQLException e) {
+			System.out.println("erreur lors de l'insertion");
+		}
+	}
+
 	public void insert(Personne p) {
 		try {
-			String req = "insert into TPNOTE_personne values(?,?,?,?,?)";
+			String req = "insert into TPNOTE_personne(id,nom,prenom) values(?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(req);
 			ps.setInt(1, p.getId());
 			ps.setString(2, p.getNom());
 			ps.setString(3, p.getPrenom());
-			if (p.getEvaluation() == null) {
-				ps.setString(3, "");
-			} else {
-				ps.setString(4, p.getEvaluation());
-			}
-			if (p.getPere() == null) {
-				ps.setInt(5, 1);
-			} else {
-				ps.setInt(5, p.getPere().getId());
-			}
-		} catch (
-
-		SQLException e)
-
-		{
+			ps.execute();
+			conn.commit();
+		} catch (SQLException e) {
+			System.out.println("erreur lors de l'insertion");
 		}
 
 	}
@@ -65,7 +65,7 @@ public class PersonneMapper {
 			ps.execute();
 			conn.commit();
 		} catch (SQLException e) {
-
+			System.out.println("erreur lors de la supression");
 		}
 	}
 
@@ -81,6 +81,7 @@ public class PersonneMapper {
 			ps.execute();
 			conn.commit();
 		} catch (SQLException e) {
+			System.out.println("erreur lors de l'update");
 		}
 	}
 
@@ -101,6 +102,7 @@ public class PersonneMapper {
 			p.setFils(new VirtualProxyListPersonne(Integer.parseInt(id)));
 			return p;
 		} catch (SQLException e) {
+			System.out.println("erreur lors de la recherche de personne");
 		}
 		return null;
 	}
@@ -113,10 +115,11 @@ public class PersonneMapper {
 			ps.setString(1, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				fils.add(new VirtualProxyPersonne(rs.getInt(1)));
+				fils.add(findById(String.valueOf(rs.getInt(1))));
 			}
 			return fils;
 		} catch (SQLException e) {
+			System.out.println("erreur lors de la recherche de fils");
 		}
 		return null;
 	}

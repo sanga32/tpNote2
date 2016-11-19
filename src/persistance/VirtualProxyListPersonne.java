@@ -17,6 +17,7 @@ public class VirtualProxyListPersonne implements List<Personne>{
 	}
 	
 	public VirtualProxyListPersonne() {
+		System.out.println("PROXY LISTPERSONNE");
 		List<Personne> personnes = new ArrayList<Personne>();
 	}
 	
@@ -37,13 +38,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 		return personnes;
 	}
 
-
 	@Override
 	public boolean add(Personne e) {
-		// TODO Auto-generated method stub
-		return false;
+		personnes.add(e);
+		return true;
 	}
-
 
 	@Override
 	public void add(int index, Personne element) {
@@ -51,13 +50,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 		
 	}
 
-
 	@Override
 	public boolean addAll(Collection<? extends Personne> c) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 
 	@Override
 	public boolean addAll(int index, Collection<? extends Personne> c) {
@@ -65,13 +62,10 @@ public class VirtualProxyListPersonne implements List<Personne>{
 		return false;
 	}
 
-
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		personnes.clear();
 	}
-
 
 	@Override
 	public boolean contains(Object o) {
@@ -79,20 +73,16 @@ public class VirtualProxyListPersonne implements List<Personne>{
 		return false;
 	}
 
-
 	@Override
 	public boolean containsAll(Collection<?> c) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-
 	@Override
 	public Personne get(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		return personnes.get(index);
 	}
-
 
 	@Override
 	public int indexOf(Object o) {
@@ -100,13 +90,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 		return 0;
 	}
 
-
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
+		if(personnes.isEmpty())return true;
 		return false;
 	}
-
 
 	@Override
 	public Iterator<Personne> iterator() {
@@ -114,13 +102,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 		return null;
 	}
 
-
 	@Override
 	public int lastIndexOf(Object o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 
 	@Override
 	public ListIterator<Personne> listIterator() {
@@ -128,13 +114,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 		return null;
 	}
 
-
 	@Override
 	public ListIterator<Personne> listIterator(int index) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 	@Override
 	public boolean remove(Object o) {
@@ -142,13 +126,10 @@ public class VirtualProxyListPersonne implements List<Personne>{
 		return false;
 	}
 
-
 	@Override
 	public Personne remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		return personnes.remove(index);
 	}
-
 
 	@Override
 	public boolean removeAll(Collection<?> c) {
@@ -156,13 +137,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 		return false;
 	}
 
-
 	@Override
 	public boolean retainAll(Collection<?> c) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 
 	@Override
 	public Personne set(int index, Personne element) {
@@ -170,13 +149,10 @@ public class VirtualProxyListPersonne implements List<Personne>{
 		return null;
 	}
 
-
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return personnes.size();
 	}
-
 
 	@Override
 	public List<Personne> subList(int fromIndex, int toIndex) {
@@ -184,13 +160,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 		return null;
 	}
 
-
 	@Override
 	public Object[] toArray() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 	@Override
 	public <T> T[] toArray(T[] a) {
