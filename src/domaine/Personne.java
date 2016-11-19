@@ -24,6 +24,7 @@ public class Personne implements IDomainObject {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.evaluation = evaluation;
+		this.pere = null;
 		this.fils = new ArrayList<Personne>();
 		this.obs = new ArrayList<Observateur>();
 	}
