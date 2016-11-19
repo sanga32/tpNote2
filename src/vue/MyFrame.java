@@ -9,7 +9,7 @@ public class MyFrame extends JFrame{
 	public MyFrame(String name, Dimension d) {
 		super(name);
 		this.setPreferredSize(d);
-		Login l = new Login();
+		Login l = new Login(this);
 		
 		
 		this.setContentPane(l);
