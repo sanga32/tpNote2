@@ -13,12 +13,12 @@ public class VirtualProxyListPersonne implements List<Personne>{
 
 	VirtualProxyListPersonne(int id_personne) {
 		this.id_personne = id_personne;
-		List<Personne> personnes = new ArrayList<Personne>();
+		personnes = new ArrayList<Personne>();
 	}
 	
 	public VirtualProxyListPersonne() {
 		System.out.println("PROXY LISTPERSONNE");
-		List<Personne> personnes = new ArrayList<Personne>();
+		personnes = new ArrayList<Personne>();
 	}
 	
 	
@@ -40,15 +40,6 @@ public class VirtualProxyListPersonne implements List<Personne>{
 
 	@Override
 	public boolean add(Personne e) {
-		if (personnes == null) {
-			personnes = new VirtualProxyListPersonne(id_personne);
-			try {
-				initialisation();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
 		this.personnes.add(e);
 		return true;
 	}
