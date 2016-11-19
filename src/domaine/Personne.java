@@ -2,7 +2,7 @@ package domaine;
 
 import java.util.ArrayList;
 
-import persistance.VirtualProxyListPersonne;
+import persistance.VirtualProxyPersonne;
 
 public class Personne {
 	int id;
@@ -67,8 +67,5 @@ public class Personne {
 	public void setFils(ArrayList<Personne> fils) {
 		this.fils = fils;
 	}
-	
-	
-	
-	
+
 }

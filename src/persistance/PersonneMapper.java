@@ -77,14 +77,14 @@ public class PersonneMapper {
 		p.setNom(rs.getString(2));
 		p.setPrenom(rs.getString(3));
 		p.setEvaluation(rs.getString(4));
-		p.setPere(new VirtualProxyListPersonne(rs.getInt(5)));
+		p.setPere(new VirtualProxyPersonne(rs.getInt(5)));
 		//Ici on va chercher ses fils
 		String req2 = "SELECT id FROM TPNOTE_personne WHERE pere=?";
 		PreparedStatement ps2 = conn.prepareStatement(req);
 		ps2.setString(1, id);
 		ResultSet rs2 = ps.executeQuery();
 		while(rs2.next()){
-			p.addFils(new VirtualProxyListPersonne(rs2.getInt(1)));
+			p.addFils(new VirtualProxyPersonne(rs2.getInt(1)));
 		}
 
 		return p;
