@@ -8,14 +8,14 @@ public class Personne {
 	int id;
 	String nom;
 	String prenom;
-	int evaluation;
+	String evaluation;
 	Personne pere;
 	ArrayList<Personne> fils;
 	
 	public Personne(){
 	}
 	
-	public Personne(int id, String nom, String prenom, int evaluation) {
+	public Personne(int id, String nom, String prenom, String evaluation) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -48,10 +48,10 @@ public class Personne {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public int getEvaluation() {
+	public String getEvaluation() {
 		return evaluation;
 	}
-	public void setEvaluation(int evaluation) {
+	public void setEvaluation(String evaluation) {
 		this.evaluation = evaluation;
 	}
 	public Personne getPere() {

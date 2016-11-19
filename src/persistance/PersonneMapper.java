@@ -32,7 +32,7 @@ public class PersonneMapper {
 			ps.setInt(1, p.getId());
 			ps.setString(2, p.getNom());
 			ps.setString(3, p.getPrenom());
-			ps.setInt(4, p.getEvaluation());
+			ps.setString(4, p.getEvaluation());
 			ps.setInt(5, p.getPere().getId());
 		} catch (SQLException e) {
 		}
@@ -56,7 +56,7 @@ public class PersonneMapper {
 			PreparedStatement ps = conn.prepareStatement(req);
 			ps.setString(1, p.getNom());
 			ps.setString(2, p.getPrenom());
-			ps.setInt(3, p.getEvaluation());
+			ps.setString(3, p.getEvaluation());
 			ps.setInt(4, p.getPere().getId());
 			ps.setInt(5, p.getId());
 			ps.execute();
@@ -77,7 +77,7 @@ public class PersonneMapper {
 		p.setId(rs.getInt(1));
 		p.setNom(rs.getString(2));
 		p.setPrenom(rs.getString(3));
-		p.setEvaluation(rs.getInt(4));
+		p.setEvaluation(rs.getString(4));
 		p.setPere(new VirtualProxyListPersonne(rs.getInt(5)));
 		//Ici on va chercher ses fils
 		String req2 = "SELECT id FROM TPNOTE_personne WHERE pere=?";
