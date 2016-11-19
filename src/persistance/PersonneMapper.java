@@ -106,13 +106,13 @@ public class PersonneMapper {
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			Personne p = new Personne();
+			p.add(UnitOfWork.getInstance());
 			p.setId(rs.getInt(1));
 			p.setNom(rs.getString(2));
 			p.setPrenom(rs.getString(3));
 			p.setEvaluation(rs.getString(4));
 			p.setPere(new VirtualProxyPersonne(rs.getInt(5)));
 			p.setFils(new VirtualProxyListPersonne(id));
-			p.add(UnitOfWork.getInstance());
 			return p;
 		} catch (SQLException e) {
 			System.out.println("erreur lors de la recherche de personne");
