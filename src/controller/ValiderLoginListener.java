@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import domaine.Personne;
+import persistance.PersonneMapper;
 import vue.InterfacePersonne;
 
 public class ValiderLoginListener implements ActionListener{
@@ -28,8 +29,6 @@ public class ValiderLoginListener implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		Personne p;
-		//PersonneMapper pm = new PersonneMapper();
-		//p = pm.findById(saisieID.getText());
 		if ( saisieID.getText().equals("")){
 			JOptionPane jop3 = new JOptionPane();
 			jop3.showMessageDialog(null, "Veuillez entrer un ID", "Message d'erreur",  JOptionPane.ERROR_MESSAGE);
@@ -41,11 +40,13 @@ public class ValiderLoginListener implements ActionListener{
 				
 				int id = Integer.parseInt(saisieID.getText());
 				//Ici a la place on utilisera le mapper 
-				p = new Personne(1, "Pat", "Tom", "A chier");
+				p = PersonneMapper.getInstance().findById(id);
+
+				/*p = new Personne(1, "Pat", "Tom", "A chier");
 				p.setPere(new Personne(2, "Bibi", "Jean", "Nul"));
 				List<Personne> l = new ArrayList<Personne>();
 				p.addFils(new Personne(3, "test", "paul", "Très bien"));
-				p.addFils(new Personne(4, "second", "pierre", "Très nul"));
+				p.addFils(new Personne(4, "second", "pierre", "Très nul"));*/
 
 
 				try {

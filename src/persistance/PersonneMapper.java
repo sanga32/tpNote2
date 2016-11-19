@@ -16,7 +16,7 @@ public class PersonneMapper {
 	static Connection conn;
 	static PersonneMapper inst;
 
-	public PersonneMapper() {
+	private PersonneMapper() {
 		try {
 			conn = DriverManager.getConnection(ConnectionInfo.DB_URL, Utilisateur.COMPTE, Utilisateur.MDP);
 			conn.setAutoCommit(false);
