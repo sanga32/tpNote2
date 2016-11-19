@@ -1,5 +1,6 @@
 package vue;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -11,8 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
-import codeProf.ExempleUI.MaDonnee;
+import controller.JListListener;
+import controller.ValiderEvaluationListener;
 import domaine.Personne;
 
 public class InterfacePersonne extends JPanel {
@@ -64,18 +67,40 @@ public class InterfacePersonne extends JPanel {
         }
         
         jl.setModel(lmodel);
-       // jl.getSelectionModel().addListSelectionListener(this);
-
+        JLabel evalFils = new JLabel("Sélectionner un fils");
+        Personne filsAModifier = null;
+        jl.getSelectionModel().addListSelectionListener(new JListListener(jl, evalFils, this, filsAModifier));
         
         JScrollPane listScrollPane = new JScrollPane(jl, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         gbc.gridy = 4;
 		gbc.gridx = 0;
-		gbc.gridheight = 2;
-	    gbc.gridwidth =2;
+		gbc.gridheight = 3;
+	    gbc.gridwidth =3;
 	    
 	    this.add(listScrollPane, gbc);
         
+	    gbc.gridx = 3;
+		gbc.gridheight = 1;
+	    gbc.gridwidth =1;
+
+	    this.add(evalFils, gbc);
+	    
+        gbc.gridy = 5;
+
+	    JTextField nouvelleEval = new JTextField();
+		gbc.fill = GridBagConstraints.NONE;		
+		nouvelleEval.setPreferredSize(new Dimension(130, 35));
+		nouvelleEval.addActionListener(new ValiderEvaluationListener(filsAModifier, nouvelleEval));
+	    this.add(nouvelleEval, gbc);
+	    
+	    gbc.gridy = 6;
+		gbc.anchor = GridBagConstraints.PAGE_START; // ou BASELINE_LEADING mais pas WEST.
+
+	    JButton validerEvaluation = new JButton("Valider");
+	    validerEvaluation.addActionListener(new ValiderEvaluationListener(filsAModifier, nouvelleEval));
+	    
+	    this.add(validerEvaluation, gbc);
 	}
 
 }

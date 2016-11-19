@@ -14,7 +14,7 @@ public class MyFrame extends JFrame{
 	public MyFrame(String name, Dimension d) throws SQLException {
 		super(name);
 		//Login l = new Login(this);
-
+		
 		Personne p = new Personne(1, "Pat", "Tom", "A chier");
 		List<Personne> li = new ArrayList<Personne>();
 		p.addFils(new Personne(3, "test", "paul", "Très bien"));
