@@ -15,10 +15,18 @@ public class Personne {
 	public Personne(){
 	}
 	
-	public void add(Personne p){
+	public Personne(int id, String nom, String prenom, int evaluation) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.evaluation = evaluation;
+	}
+	public void addFils(Personne p){
 		this.fils.add(p);
 	}
-	public void remove(Personne p){
+
+	public void removeFils(Personne p){
 		this.fils.remove(p);
 	}
 	
