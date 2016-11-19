@@ -97,12 +97,12 @@ public class PersonneMapper {
 		}
 	}
 
-	public Personne findById(String id) {
+	public Personne findById(int id) {
 		try {
 			// on va chercher la personne
 			String req = "SELECT id, nom, prenom, evaluation, pere  FROM TPNOTE_personne WHERE id=?";
 			PreparedStatement ps = conn.prepareStatement(req);
-			ps.setString(1, id);
+			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			Personne p = new Personne();
@@ -111,7 +111,7 @@ public class PersonneMapper {
 			p.setPrenom(rs.getString(3));
 			p.setEvaluation(rs.getString(4));
 			p.setPere(new VirtualProxyPersonne(rs.getInt(5)));
-			p.setFils(new VirtualProxyListPersonne(Integer.parseInt(id)));
+			p.setFils(new VirtualProxyListPersonne(id));
 			p.add(UnitOfWork.getInstance());
 			return p;
 		} catch (SQLException e) {
@@ -120,15 +120,15 @@ public class PersonneMapper {
 		return null;
 	}
 
-	public List<Personne> getFilsById(String id) {
+	public List<Personne> getFilsById(int id) {
 		try {
 			List<Personne> fils = new ArrayList<Personne>();
 			String req = "SELECT id FROM TPNOTE_personne WHERE pere=?";
 			PreparedStatement ps = conn.prepareStatement(req);
-			ps.setString(1, id);
+			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				fils.add(findById(String.valueOf(rs.getInt(1))));
+				fils.add(findById(rs.getInt(1)));
 			}
 			return fils;
 		} catch (SQLException e) {

@@ -30,7 +30,7 @@ public class VirtualProxyListPersonne implements List<Personne>{
 	}
 	
 	public void initialisation() throws SQLException {
-		personnes = PersonneMapper.getInstance().getFilsById(String.valueOf(id_personne));
+		personnes = PersonneMapper.getInstance().getFilsById(id_personne);
 	}
 	
 	public List<Personne> getFils() throws SQLException {
