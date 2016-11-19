@@ -1,9 +1,22 @@
+package vue;
 
+import java.awt.Dimension;
 
-public class MyFrame{
+import javax.swing.JFrame;
+
+public class MyFrame extends JFrame{
 	
-	public MyFrame() {
-		// TODO Auto-generated constructor stub
+	public MyFrame(String name, Dimension d) {
+		super(name);
+		this.setPreferredSize(d);
+		Login l = new Login();
+		
+		
+		this.setContentPane(l);
+		this.setVisible(true);
+		this.setSize(d);
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
 	}
 	
 }
