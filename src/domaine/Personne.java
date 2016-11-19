@@ -2,6 +2,8 @@ package domaine;
 
 import java.util.ArrayList;
 
+import persistance.VirtualProxyListPersonne;
+
 public class Personne {
 	int id;
 	String nom;
@@ -13,6 +15,12 @@ public class Personne {
 	public Personne(){
 	}
 	
+	public void add(Personne p){
+		this.fils.add(p);
+	}
+	public void remove(Personne p){
+		this.fils.remove(p);
+	}
 	
 	public int getId() {
 		return id;
