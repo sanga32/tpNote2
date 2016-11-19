@@ -8,8 +8,8 @@ import java.util.ListIterator;
 
 import domaine.Personne;
 public class VirtualProxyListPersonne implements List<Personne>{
-	static int id_personne;
-	static List<Personne> personnes = null;
+	int id_personne;
+	List<Personne> personnes = null;
 
 	VirtualProxyListPersonne(int id_personne) {
 		this.id_personne = id_personne;

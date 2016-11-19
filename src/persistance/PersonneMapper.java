@@ -44,15 +44,22 @@ public class PersonneMapper {
 
 	public void insert(Personne p) {
 		try {
-			String req = "insert into TPNOTE_personne(id,nom,prenom,evaluation) values(?,?,?,?)";
+			String req = "insert into TPNOTE_personne(id,nom,prenom,evaluation) values(?,?,?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(req);
 			ps.setInt(1, p.getId());
 			ps.setString(2, p.getNom());
 			ps.setString(3, p.getPrenom());
-			if(p.getEvaluation() == null){
+			if (p.getEvaluation() == null) {
+				System.out.println("evaluation null");
 				ps.setString(4, null);
-			}else{
+			} else {
 				ps.setString(4, p.getEvaluation());
+			}
+			if (p.getPere() == null) {
+				System.out.println("pere null");
+				ps.setString(5, null);
+			} else {
+				ps.setInt(5, p.getPere().getId());
 			}
 			ps.execute();
 			conn.commit();
