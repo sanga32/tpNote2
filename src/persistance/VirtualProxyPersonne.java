@@ -27,8 +27,7 @@ public class VirtualProxyPersonne extends Personne{
 	}
 	
 	public void initialisation() throws SQLException {
-		PersonneMapper pm = new PersonneMapper();
-		personne = pm.findById(String.valueOf(id_personne));
+		personne = PersonneMapper.getInstance().findById(String.valueOf(id_personne));
 	}
 	
 	public ArrayList<Personne> getFils() throws SQLException {

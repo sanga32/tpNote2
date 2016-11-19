@@ -4,11 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class UnitOfWork {
-	Set<IDomainObject> dirty;
+	Set<IDomainObject> personnes;
 	static UnitOfWork inst = null;
 
 	public UnitOfWork() {
-		dirty = new HashSet<IDomainObject>();
+		personnes = new HashSet<IDomainObject>();
 	}
 
 	public static UnitOfWork getInstance() {
@@ -18,14 +18,14 @@ public class UnitOfWork {
 	}
 
 	public void action(IDomainObject o) {
-		dirty.add(o);
+		personnes.add(o);
 	}
 
-	void commit() {
+	public void commit() {
 		Visiteur v = new Committer();
-		for (IDomainObject o : dirty) {
+		for (IDomainObject o : personnes) {
 			v.visiter(o);
 		}
-		dirty.clear();
+		personnes.clear();
 	}
 }
