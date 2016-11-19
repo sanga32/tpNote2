@@ -18,6 +18,11 @@ public class Personne implements IDomainObject {
 	public Personne() {
 	}
 
+	@Override
+	public String toString() {
+		return nom + " " + prenom ;
+	}
+
 	public Personne(int id, String nom, String prenom, String evaluation) {
 		super();
 		this.id = id;
