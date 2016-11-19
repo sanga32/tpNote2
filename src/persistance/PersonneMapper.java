@@ -14,7 +14,7 @@ import settings.Utilisateur;
 
 public class PersonneMapper {
 	static Connection conn;
-
+	static PersonneMapper inst;
 	public PersonneMapper() {
 		try {
 			conn = DriverManager.getConnection(ConnectionInfo.DB_URL, Utilisateur.COMPTE, Utilisateur.MDP);
@@ -22,6 +22,12 @@ public class PersonneMapper {
 		} catch (SQLException e) {
 
 		}
+	}
+	
+	public static PersonneMapper getInstance() {
+		if (inst == null)
+			inst = new PersonneMapper();
+		return inst;
 	}
 
 	public void insert(Personne p) {

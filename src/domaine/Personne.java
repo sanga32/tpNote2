@@ -2,20 +2,22 @@ package domaine;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-import persistance.VirtualProxyPersonne;
+import persistance.*;
 
-public class Personne {
+public class Personne implements IDomainObject {
 	int id;
 	String nom;
 	String prenom;
 	String evaluation;
 	Personne pere;
 	ArrayList<Personne> fils;
-	
-	public Personne(){
+	List<Observateur> obs;
+
+	public Personne() {
 	}
-	
+
 	public Personne(int id, String nom, String prenom, String evaluation) {
 		super();
 		this.id = id;
@@ -23,50 +25,78 @@ public class Personne {
 		this.prenom = prenom;
 		this.evaluation = evaluation;
 	}
-	public void addFils(Personne p){
+
+	public void addFils(Personne p) {
 		this.fils.add(p);
 	}
 
-	public void removeFils(Personne p){
+	public void removeFils(Personne p) {
 		this.fils.remove(p);
 	}
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getNom() {
 		return nom;
 	}
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
 	public String getPrenom() {
 		return prenom;
 	}
+
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+
 	public String getEvaluation() {
 		return evaluation;
 	}
+
 	public void setEvaluation(String evaluation) {
 		this.evaluation = evaluation;
-		
+
 	}
+
 	public Personne getPere() {
 		return pere;
 	}
+
 	public void setPere(Personne pere) {
 		this.pere = pere;
 	}
+
 	public ArrayList<Personne> getFils() throws SQLException {
 		return fils;
 	}
+
 	public void setFils(ArrayList<Personne> fils) {
 		this.fils = fils;
+	}
+
+	@Override
+	public void add(Observateur o) {
+		obs.add(o);
+	}
+
+	@Override
+	public void notifier() {
+		for (Observateur o : obs)
+			o.action(this);
+	}
+
+	@Override
+	public void accepter(Visiteur v) {
+		v.visiter(this);
 	}
 
 }
