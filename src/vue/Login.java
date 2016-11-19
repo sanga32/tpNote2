@@ -2,6 +2,7 @@ package vue;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,7 +17,8 @@ public class Login extends JPanel{
 	public Login(JFrame f){
 
 		super();
-		this.setLayout(new BorderLayout());
+		this.setPreferredSize(f.getSize());
+		this.setLayout(new GridLayout(8,8));
 		JLabel jl = new JLabel("Votre id: ");
 		JTextField id = new JTextField();
 		JButton valider = new JButton("OK");
