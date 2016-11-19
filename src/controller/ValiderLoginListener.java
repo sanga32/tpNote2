@@ -27,6 +27,7 @@ public class ValiderLoginListener implements ActionListener{
 		Personne p;
 		//PersonneMapper pm = new PersonneMapper();
 		//p = pm.findById(saisieID.getText());
+		
 		p = new Personne(1, "Pat", "Tom", "A chier");
 		InterfacePersonne ip = new InterfacePersonne(p);
 		j.removeAll();

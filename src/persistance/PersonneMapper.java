@@ -24,7 +24,6 @@ public class PersonneMapper {
 		}
 	}
 
-
 	public void insert(Personne p) {
 		try {
 			String req = "insert into TPNOTE_personne values(?,?,?,?,?)";

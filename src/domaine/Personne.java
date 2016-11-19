@@ -53,6 +53,7 @@ public class Personne {
 	}
 	public void setEvaluation(String evaluation) {
 		this.evaluation = evaluation;
+		
 	}
 	public Personne getPere() {
 		return pere;
