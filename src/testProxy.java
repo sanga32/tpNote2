@@ -2,6 +2,7 @@ import java.sql.SQLException;
 
 import domaine.Personne;
 import persistance.PersonneMapper;
+import persistance.UnitOfWork;
 
 public class testProxy {
 
@@ -9,6 +10,8 @@ public class testProxy {
 		PersonneMapper.getInstance().clear();
 		Personne p1 = new Personne(1,"Alex","Godon",null);
 		Personne p2 = new Personne(2,"Kevin","Delporte",null);
+		p1.add(UnitOfWork.getInstance());
+		p2.add(UnitOfWork.getInstance());
 		System.out.println("on ajoute le pere et le fils");
 		p2.setPere(p1);p1.addFils(p2);
 		System.out.println(p1.getFils().size());

@@ -112,6 +112,7 @@ public class PersonneMapper {
 			p.setEvaluation(rs.getString(4));
 			p.setPere(new VirtualProxyPersonne(rs.getInt(5)));
 			p.setFils(new VirtualProxyListPersonne(Integer.parseInt(id)));
+			p.add(UnitOfWork.getInstance());
 			return p;
 		} catch (SQLException e) {
 			System.out.println("erreur lors de la recherche de personne");
