@@ -35,7 +35,7 @@ public class VirtualProxyListPersonne implements List<Personne>{
 	
 	public List<Personne> getFils() throws SQLException {
 		verifieInitilisation();
-		return personnes;
+		return personnes; 
 	}
 
 	@Override

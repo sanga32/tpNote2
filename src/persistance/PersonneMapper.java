@@ -44,7 +44,7 @@ public class PersonneMapper {
 
 	public void insert(Personne p) {
 		try {
-			String req = "insert into TPNOTE_personne(id,nom,prenom,evaluation) values(?,?,?,?,?)";
+			String req = "insert into TPNOTE_personne(id,nom,prenom,evaluation,pere) values(?,?,?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(req);
 			ps.setInt(1, p.getId());
 			ps.setString(2, p.getNom());

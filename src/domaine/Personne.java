@@ -35,7 +35,7 @@ public class Personne implements IDomainObject {
 	}
 
 	public void addFils(Personne p) {
-		this.fils.add(p);
+		fils.add(p);
 	}
 
 	public void removeFils(Personne p) {
