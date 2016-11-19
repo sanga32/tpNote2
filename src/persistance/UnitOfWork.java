@@ -3,7 +3,7 @@ package persistance;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UnitOfWork {
+public class UnitOfWork implements Observateur{
 	Set<IDomainObject> personnes;
 	static UnitOfWork inst = null;
 
