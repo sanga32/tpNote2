@@ -12,8 +12,8 @@ public class Personne implements IDomainObject {
 	String prenom;
 	String evaluation;
 	Personne pere;
-	ArrayList<Personne> fils;
-	ArrayList<Observateur> obs;
+	List<Personne> fils;
+	List<Observateur> obs;
 
 	public Personne() {
 	}
@@ -30,7 +30,7 @@ public class Personne implements IDomainObject {
 		this.prenom = prenom;
 		this.evaluation = evaluation;
 		this.pere = null;
-		this.fils = new ArrayList<Personne>();
+		this.fils = new VirtualProxyListPersonne();
 		this.obs = new ArrayList<Observateur>();
 	}
 
@@ -79,7 +79,7 @@ public class Personne implements IDomainObject {
 
 	}
 
-	public Personne getPere() {
+	public Personne getPere() throws SQLException {
 		return pere;
 	}
 
@@ -88,11 +88,11 @@ public class Personne implements IDomainObject {
 		notifier();
 	}
 
-	public ArrayList<Personne> getFils() throws SQLException {
+	public List<Personne> getFils() throws SQLException {
 		return fils;
 	}
 
-	public void setFils(ArrayList<Personne> fils) {
+	public void setFils(List<Personne> fils) {
 		this.fils = fils;
 		notifier();
 	}
