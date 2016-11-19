@@ -18,19 +18,20 @@ public class VirtualProxyPersonne extends Personne{
 		this.id_personne = id_personne;
 	}
 	
-	public static void initialisation() throws SQLException {
+	
+	public void verifieInitilisation() throws SQLException {
+		if (personne == null) {
+			personne = new VirtualProxyPersonne(id_personne);
+			initialisation();
+		}
+	}
+	
+	public void initialisation() throws SQLException {
 		PersonneMapper pm = new PersonneMapper();
 		personne = pm.findById(String.valueOf(id_personne));
 	}
 	
-	public void verifieInitilisation() {
-		if (personne == null) {
-			personne = new Personne();
-			(VirtualProxyPersonne) personne.initialisation();
-		}
-	}
-	
-	public ArrayList<Personne> getFils() {
+	public ArrayList<Personne> getFils() throws SQLException {
 		verifieInitilisation();
 		return personne.getFils();
 	}

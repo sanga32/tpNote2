@@ -1,5 +1,6 @@
 package domaine;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import persistance.VirtualProxyPersonne;
@@ -61,7 +62,7 @@ public class Personne {
 	public void setPere(Personne pere) {
 		this.pere = pere;
 	}
-	public ArrayList<Personne> getFils() {
+	public ArrayList<Personne> getFils() throws SQLException {
 		return fils;
 	}
 	public void setFils(ArrayList<Personne> fils) {
