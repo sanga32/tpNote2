@@ -48,7 +48,7 @@ public class Personne implements IDomainObject {
 
 	public void setId(int id) {
 		this.id = id;
-		//notifier();
+		notifier();
 	}
 
 	public String getNom() {
@@ -57,7 +57,7 @@ public class Personne implements IDomainObject {
 
 	public void setNom(String nom) {
 		this.nom = nom;
-		//notifier();
+		notifier();
 	}
 
 	public String getPrenom() {
@@ -66,7 +66,7 @@ public class Personne implements IDomainObject {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-		//notifier();
+		notifier();
 	}
 
 	public String getEvaluation() {
@@ -75,7 +75,7 @@ public class Personne implements IDomainObject {
 
 	public void setEvaluation(String evaluation) {
 		this.evaluation = evaluation;
-		//notifier();
+		notifier();
 
 	}
 
@@ -89,16 +89,16 @@ public class Personne implements IDomainObject {
 
 	public void setPere(Personne pere) {
 		this.pere = pere;
-		//notifier();
+		notifier();
 	}
 
 	public List<Personne> getFils() throws SQLException {
-		return fils;
+		return ((VirtualProxyListPersonne) fils).getFils();
 	}
 
 	public void setFils(List<Personne> fils) {
 		this.fils = fils;
-		//notifier();
+		notifier();
 	}
 
 	@Override
