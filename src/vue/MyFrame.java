@@ -2,12 +2,8 @@ package vue;
 
 import java.awt.Dimension;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JFrame;
-
-import domaine.Personne;
 
 public class MyFrame extends JFrame{
 	

@@ -2,7 +2,6 @@ package Service;
 import java.awt.Dimension;
 import java.sql.SQLException;
 
-import vue.Login;
 import vue.MyFrame;
 
 public class Main {

@@ -2,11 +2,9 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 import javax.swing.JPanel;
 
-import persistance.UnitOfWork;
 import vue.Login;
 
 public class AnnulerListener implements ActionListener {
