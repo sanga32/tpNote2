@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import controller.AnnulerListener;
+import controller.EnregListener;
 import controller.JListListener;
 import controller.ValiderEvaluationListener;
 import domaine.Personne;
@@ -111,6 +112,15 @@ public class InterfacePersonne extends JPanel {
 	    validerEvaluation.addActionListener(new ValiderEvaluationListener(filsAModifier, nouvelleEval));
 	    
 	    this.add(validerEvaluation, gbc);
+	    
+	    gbc.gridy = 7;
+	    gbc.gridwidth =4;
+	    
+	    JButton enreg = new JButton("Enregistrer les modifs");
+	    enreg.addActionListener(new EnregListener());
+	    
+	    this.add(enreg, gbc);
+
 	}
 
 }

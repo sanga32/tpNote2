@@ -23,7 +23,6 @@ public class AnnulerListener implements ActionListener {
 		Login log = new Login();
 		j.removeAll();
 		j.add(log);
-		UnitOfWork.getInstance().commit();
 		j.updateUI();
 	}
 
