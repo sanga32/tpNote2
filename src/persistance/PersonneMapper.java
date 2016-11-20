@@ -167,6 +167,12 @@ public class PersonneMapper {
 		return null;
 	}
 
+	/**
+	 * Vérifie si l'id passé en paramètre se trouve en BDD
+	 * @param id
+	 * 			id à chercher en BDD
+	 * @return vrai si une personne existe sinon false
+	 */
 	public boolean idValide(int id) {
 		try {
 			String req = "SELECT id, nom, prenom, evaluation, pere  FROM TPNOTE_personne WHERE id=?";
