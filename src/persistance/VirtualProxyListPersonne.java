@@ -1,5 +1,6 @@
 package persistance;
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -7,6 +8,12 @@ import java.util.List;
 import java.util.ListIterator;
 
 import domaine.Personne;
+
+/**
+ * 
+ * @author Alexandre Godon, Kevin Delporte, Teddy Lequette
+ *
+ */
 public class VirtualProxyListPersonne implements List<Personne>{
 	private int id_personne;
 	private List<Personne> personnes = null;
@@ -16,7 +23,6 @@ public class VirtualProxyListPersonne implements List<Personne>{
 	}
 	
 	public VirtualProxyListPersonne() {
-		personnes = new ArrayList<Personne>();
 	}
 	
 	
