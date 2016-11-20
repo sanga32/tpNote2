@@ -23,10 +23,8 @@ public class UnitOfWork implements Observateur {
 
 	public void commit() {
 		Visiteur v = new Committer();
-		if (!personnes.isEmpty()) {
-			for (IDomainObject o : personnes) {
-				v.visiter(o);
-			}
+		for (IDomainObject o : personnes) {
+			v.visiter(o);
 		}
 		personnes.clear();
 	}
