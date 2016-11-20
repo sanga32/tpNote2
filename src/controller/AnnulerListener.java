@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import javax.swing.JPanel;
 
+import persistance.UnitOfWork;
 import vue.Login;
 
 public class AnnulerListener implements ActionListener {
@@ -22,6 +23,7 @@ public class AnnulerListener implements ActionListener {
 		Login log = new Login();
 		j.removeAll();
 		j.add(log);
+		UnitOfWork.getInstance().commit();
 		j.updateUI();
 	}
 
