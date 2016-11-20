@@ -30,7 +30,7 @@ public class InterfacePersonne extends JPanel {
 		gbc.gridx = gbc.gridy = 0; // la grille commence en (0, 0)
 		gbc.gridheight = 1; // valeur par défaut - peut s'étendre sur une seule ligne.
 		gbc.gridwidth = 3; // valeur par défaut - peut s'étendre sur une seule ligne.
-		gbc.anchor = GridBagConstraints.FIRST_LINE_START; // ou BASELINE_LEADING mais pas WEST.
+		gbc.anchor = GridBagConstraints.FIRST_LINE_START; 
 		gbc.insets = new Insets(10, 15, 0, 0);
 		gbc.fill = GridBagConstraints.BOTH;		
 		JLabel vous = new JLabel("Vous: "+ p.getNom()+" "+p.getPrenom());

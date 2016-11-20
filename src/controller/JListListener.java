@@ -27,12 +27,8 @@ public class JListListener implements ListSelectionListener {
 	public void valueChanged(ListSelectionEvent arg0) {
 		// TODO Auto-generated method stub
 		int i = l.getSelectedIndex();
-		System.out.println("Element numero= " + i + " selectionné.");
-		System.out.println("Valeur de l'element: " + l.getModel().getElementAt(i).toString());
-		System.out.println("ID de l'element: " + l.getModel().getElementAt(i).getId());
 		j.setText("Evaluation de " + l.getModel().getElementAt(i));
 		tmp = l.getModel().getElementAt(i);
-		System.out.println("---"+tmp+"---");
 		jp.updateUI();
 
 	}

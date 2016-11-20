@@ -34,10 +34,8 @@ public class ValiderEvaluationListener implements ActionListener {
 			JOptionPane jop3 = new JOptionPane();
 			jop3.showMessageDialog(null, "Veuillez sélectionner un fils", "Message d'erreur",  JOptionPane.ERROR_MESSAGE);
 		} else {
-			System.out.println("----------Attention----------"+ JListListener.tmp.getEvaluation());
 			JListListener.tmp.setEvaluation(eval.getText());
 			eval.setText("");
-			System.out.println("----------Attention----------"+ JListListener.tmp.getEvaluation());
 		}
 		
 	}
