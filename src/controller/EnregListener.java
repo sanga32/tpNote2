@@ -3,6 +3,8 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import persistance.UnitOfWork;
 
 public class EnregListener implements ActionListener {
@@ -11,6 +13,8 @@ public class EnregListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		UnitOfWork.getInstance().commit();
+		JOptionPane jop1 = new JOptionPane();
+		jop1.showMessageDialog(null, "Modifications enregistrées", "Information", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 }
