@@ -13,7 +13,7 @@ import settings.ConnectionInfo;
 import settings.Utilisateur;
 
 public class PersonneMapper {
-	static Connection conn;
+	private Connection conn;
 	static PersonneMapper inst;
 
 	public PersonneMapper() {

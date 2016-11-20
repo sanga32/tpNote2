@@ -11,10 +11,10 @@ import java.util.ListIterator;
 import domaine.Personne;
 
 public class VirtualProxyPersonne extends Personne{
-	int id_personne;
-	Personne personne = null;
+	private int id_personne;
+	private Personne personne = null;
 
-	VirtualProxyPersonne(int id_personne) {
+	public VirtualProxyPersonne(int id_personne) {
 		this.id_personne = id_personne;
 	}
 	

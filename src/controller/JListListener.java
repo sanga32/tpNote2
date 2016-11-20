@@ -10,9 +10,9 @@ import domaine.Personne;
 
 public class JListListener implements ListSelectionListener {
 
-	JList<Personne> l;
-	JLabel j;
-	JPanel jp;
+	private JList<Personne> l;
+	private JLabel j;
+	private JPanel jp;
 	protected static Personne tmp;
 
 	public JListListener(JList<Personne> l, JLabel evalFils, JPanel jp, Personne filsAModifier) {

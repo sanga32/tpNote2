@@ -7,13 +7,13 @@ import java.util.List;
 import persistance.*;
 
 public class Personne implements IDomainObject {
-	int id;
-	String nom;
-	String prenom;
-	String evaluation;
-	Personne pere;
-	List<Personne> fils;
-	List<Observateur> obs;
+	private int id;
+	private String nom;
+	private String prenom;
+	private String evaluation;
+	private Personne pere;
+	private List<Personne> fils;
+	private List<Observateur> obs;
 
 	public Personne() {
 		this.fils = new VirtualProxyListPersonne();

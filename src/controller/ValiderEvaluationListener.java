@@ -10,7 +10,7 @@ import domaine.Personne;
 
 public class ValiderEvaluationListener implements ActionListener {
 
-	JTextField eval;
+	private JTextField eval;
 	
 	public ValiderEvaluationListener(Personne filsAModifier, JTextField nouvelleEval) {
 		// TODO Auto-generated constructor stub

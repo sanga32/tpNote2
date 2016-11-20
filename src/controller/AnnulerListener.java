@@ -11,7 +11,7 @@ import vue.Login;
 
 public class AnnulerListener implements ActionListener {
 
-	JPanel j;
+	private JPanel j;
 	
 	public AnnulerListener(JPanel j) {
 		// TODO Auto-generated constructor stub

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class UnitOfWork implements Observateur {
-	Set<IDomainObject> personnes;
+	private Set<IDomainObject> personnes;
 	static UnitOfWork inst = null;
 
 	public UnitOfWork() {
