@@ -11,16 +11,18 @@ import java.util.List;
 import domaine.Personne;
 import settings.ConnectionInfo;
 import settings.Utilisateur;
+
 /**
- * PersonneMapper est la classe permettant de faire le lien avec la BDD 
- * Elle permet d'insérer, modifier, supprimer ou chercher une personne
+ * PersonneMapper est la classe permettant de faire le lien avec la BDD Elle
+ * permet d'insérer, modifier, supprimer ou chercher une personne
+ * 
  * @author Alexandre Godon, Kevin Delporte, Teddy Lequette
  *
  */
 public class PersonneMapper {
 	private Connection conn;
 	static PersonneMapper inst;
-	
+
 	/**
 	 * Permet d'initialiser le PersonneMapper
 	 */
@@ -32,11 +34,11 @@ public class PersonneMapper {
 
 		}
 	}
-	
+
 	/**
 	 * Retourne l'instance de PersonneMapper
 	 */
-	
+
 	public static PersonneMapper getInstance() {
 		if (inst == null)
 			inst = new PersonneMapper();
@@ -46,7 +48,7 @@ public class PersonneMapper {
 	/**
 	 * Supprime le contenue de la table TPNOTE_personne
 	 */
-	
+
 	public void clear() {
 		try {
 			String req = "delete from TPNOTE_personne";
@@ -60,8 +62,9 @@ public class PersonneMapper {
 
 	/**
 	 * Insert en BDD une personne
+	 * 
 	 * @param p
-	 * 			personne à insérer en BDD
+	 *            personne à insérer en BDD
 	 */
 	public void insert(Personne p) {
 		try {
@@ -90,8 +93,9 @@ public class PersonneMapper {
 
 	/**
 	 * Delete la personne de la table
+	 * 
 	 * @param p
-	 * 			personne à supprimer de la BDD
+	 *            personne à supprimer de la BDD
 	 */
 	public void delete(Personne p) {
 		try {
@@ -104,10 +108,12 @@ public class PersonneMapper {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * Modifie une personne dans la BDD
+	 * 
 	 * @param p
-	 * 			personne à modifier
+	 *            personne à modifier
 	 */
 	public void update(Personne p) {
 		try {
@@ -128,38 +134,58 @@ public class PersonneMapper {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * Recherche une personne à partir de son ID
+	 * 
 	 * @param id
-	 * 			id de la personne à trouver en BDD
+	 *            id de la personne à trouver en BDD
 	 * @return une personne
 	 */
 	public Personne findById(int id) {
+		if (idValide(id)) {
+			try {
+				// on va chercher la personne
+				String req = "SELECT id, nom, prenom, evaluation, pere  FROM TPNOTE_personne WHERE id=?";
+				PreparedStatement ps = conn.prepareStatement(req);
+				ps.setInt(1, id);
+				ResultSet rs = ps.executeQuery();
+				rs.next();
+				int id_personne = rs.getInt(1);
+				String nom = rs.getString(2);
+				String prenom = rs.getString(3);
+				String evaluation = rs.getString(4);
+				Personne pere = new VirtualProxyPersonne(rs.getInt(5));
+				List<Personne> fils = new VirtualProxyListPersonne(id);
+				Personne p = new Personne(id_personne, nom, prenom, evaluation, pere, fils);
+				p.add(UnitOfWork.getInstance());
+				return p;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+	public boolean idValide(int id) {
 		try {
-			// on va chercher la personne
 			String req = "SELECT id, nom, prenom, evaluation, pere  FROM TPNOTE_personne WHERE id=?";
 			PreparedStatement ps = conn.prepareStatement(req);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
-			int id_personne = rs.getInt(1);
-			String nom = rs.getString(2);
-			String prenom = rs.getString(3);
-			String evaluation = rs.getString(4);
-			Personne pere = new VirtualProxyPersonne(rs.getInt(5));
-			List<Personne> fils = new VirtualProxyListPersonne(id);
-			Personne p = new Personne(id_personne,nom,prenom,evaluation,pere,fils);
-			p.add(UnitOfWork.getInstance());
-			return p;
+			rs.getInt(1);
+			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			return false;
 		}
-		return null;
 	}
+
 	/**
 	 * recherche les fils d'une personne à partir de son ID
+	 * 
 	 * @param id
-	 * 			id de personne à qui on veut connaitre les fils
+	 *            id de personne à qui on veut connaitre les fils
 	 * @return une liste de personne qui sont les fils
 	 */
 
