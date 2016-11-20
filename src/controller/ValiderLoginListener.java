@@ -50,13 +50,22 @@ public class ValiderLoginListener implements ActionListener{
 
 
 				try {
-					InterfacePersonne ip = new InterfacePersonne(p);
+					
+					InterfacePersonne ip = null;
+					try {
+						ip = new InterfacePersonne(p);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					j.removeAll();
 					j.add(ip);
 					j.updateUI();
-				} catch (SQLException e) {
+				} catch (NullPointerException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					JOptionPane jop3 = new JOptionPane();
+					jop3.showMessageDialog(null, "Aucune personne avec cet ID", "Message d'erreur",  JOptionPane.ERROR_MESSAGE);
+
 				}
 			} catch (NumberFormatException e ){
 				JOptionPane jop3 = new JOptionPane();
