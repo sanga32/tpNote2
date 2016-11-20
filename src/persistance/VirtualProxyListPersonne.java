@@ -100,7 +100,7 @@ public class VirtualProxyListPersonne implements List<Personne>{
 	@Override
 	public Iterator<Personne> iterator() {
 		// TODO Auto-generated method stub
-		return null;
+		return personnes.iterator();
 	}
 
 	@Override
