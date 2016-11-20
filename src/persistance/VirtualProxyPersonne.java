@@ -11,8 +11,8 @@ import java.util.ListIterator;
 import domaine.Personne;
 
 public class VirtualProxyPersonne extends Personne{
-	static int id_personne;
-	static Personne personne = null;
+	int id_personne;
+	Personne personne = null;
 
 	VirtualProxyPersonne(int id_personne) {
 		System.out.println("PROXY PERSONNE");
@@ -23,8 +23,8 @@ public class VirtualProxyPersonne extends Personne{
 	public void verifieInitilisation() throws SQLException {
 		if (personne == null) {
 			personne = new VirtualProxyPersonne(id_personne);
-			initialisation();
 		}
+		initialisation();
 	}
 	
 	public void initialisation() throws SQLException {
