@@ -10,7 +10,8 @@ import java.util.ListIterator;
 import domaine.Personne;
 
 /**
- * 
+ * ProxyListPersonne permet de charger les fils d'une personne uniquement
+ * lorsqu'on lui demande
  * @author Alexandre Godon, Kevin Delporte, Teddy Lequette
  *
  */
@@ -18,6 +19,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 	private int id_personne;
 	private List<Personne> personnes = null;
 
+	/**
+	 * Contructeur du virtualProxyListPersonne qui 
+	 * récupère l'id de la personne
+	 * @param id_personne
+	 */
 	public VirtualProxyListPersonne(int id_personne) {
 		this.id_personne = id_personne;
 	}
@@ -25,7 +31,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 	public VirtualProxyListPersonne() {
 	}
 	
-	
+	/**
+	 * On vérifie si on a déja initialisé la liste de fils
+	 * sinon on l'inisialise
+	 * @throws SQLException
+	 */
 	public void verifieInitilisation() throws SQLException {
 		if (personnes == null) {
 			personnes = new ArrayList<Personne>();
@@ -33,16 +43,29 @@ public class VirtualProxyListPersonne implements List<Personne>{
 		}
 
 	}
-	
+	/**
+	 * C'est ici qu'on récupère les fils en BDD
+	 * @throws SQLException
+	 */
 	public void initialisation() throws SQLException {
 		personnes = PersonneMapper.getInstance().getFilsById(id_personne);
 	}
 	
+	/**
+	 * On va chercher les fils d'une personne
+	 * @return une liste de personne 
+	 * @throws SQLException
+	 */
 	public List<Personne> getFils() throws SQLException {
 		verifieInitilisation();
 		return personnes; 
 	}
 
+	/**
+	 * On ajoute un fils à la liste de personne
+	 * 
+	 * @return true si tout s'est bien passé
+	 */
 	@Override
 	public boolean add(Personne e) {
 		try {
