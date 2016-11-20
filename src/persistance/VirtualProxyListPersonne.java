@@ -17,7 +17,6 @@ public class VirtualProxyListPersonne implements List<Personne>{
 	}
 	
 	public VirtualProxyListPersonne() {
-		System.out.println("PROXY LISTPERSONNE");
 		personnes = new ArrayList<Personne>();
 	}
 	

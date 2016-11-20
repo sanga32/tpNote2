@@ -50,13 +50,11 @@ public class PersonneMapper {
 			ps.setString(2, p.getNom());
 			ps.setString(3, p.getPrenom());
 			if (p.getEvaluation() == null) {
-				System.out.println("evaluation null");
 				ps.setString(4, null);
 			} else {
 				ps.setString(4, p.getEvaluation());
 			}
 			if (p.getPere() == null) {
-				System.out.println("pere null");
 				ps.setString(5, null);
 			} else {
 				ps.setInt(5, p.getPere().getId());
