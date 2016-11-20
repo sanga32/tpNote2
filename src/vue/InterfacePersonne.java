@@ -20,6 +20,7 @@ import controller.JListListener;
 import controller.ValiderEvaluationListener;
 import domaine.Personne;
 
+@SuppressWarnings("serial")
 public class InterfacePersonne extends JPanel {
 
 	public InterfacePersonne(Personne p) throws SQLException {

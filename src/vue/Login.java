@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 import controller.ValiderLoginListener;
 
+@SuppressWarnings("serial")
 public class Login extends JPanel{
 
 	public Login(){

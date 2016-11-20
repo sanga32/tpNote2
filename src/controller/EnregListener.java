@@ -13,8 +13,7 @@ public class EnregListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		UnitOfWork.getInstance().commit();
-		JOptionPane jop1 = new JOptionPane();
-		jop1.showMessageDialog(null, "Modifications enregistrées", "Information", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Modifications enregistrées", "Information", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 }

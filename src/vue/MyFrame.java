@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class MyFrame extends JFrame{
 	
 	public MyFrame(String name, Dimension d) throws SQLException {

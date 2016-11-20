@@ -28,8 +28,7 @@ public class ValiderLoginListener implements ActionListener{
 		// TODO Auto-generated method stub
 		Personne p;
 		if ( saisieID.getText().equals("")){
-			JOptionPane jop3 = new JOptionPane();
-			jop3.showMessageDialog(null, "Veuillez entrer un ID", "Message d'erreur",  JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Veuillez entrer un ID", "Message d'erreur",  JOptionPane.ERROR_MESSAGE);
 
 
 		}else{
@@ -61,13 +60,11 @@ public class ValiderLoginListener implements ActionListener{
 					j.updateUI();
 				} catch (NullPointerException e) {
 					// TODO Auto-generated catch block
-					JOptionPane jop3 = new JOptionPane();
-					jop3.showMessageDialog(null, "Aucune personne avec cet ID", "Message d'erreur",  JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Aucune personne avec cet ID", "Message d'erreur",  JOptionPane.ERROR_MESSAGE);
 
 				}
 			} catch (NumberFormatException e ){
-				JOptionPane jop3 = new JOptionPane();
-				jop3.showMessageDialog(null, "Veuillez entrer un ID correct !", "Message d'erreur",  JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Veuillez entrer un ID correct !", "Message d'erreur",  JOptionPane.ERROR_MESSAGE);
 
 			}
 		}
