@@ -32,7 +32,14 @@ public class InterfacePersonne extends JPanel {
 		gbc.insets = new Insets(10, 15, 0, 0);
 		gbc.fill = GridBagConstraints.BOTH;		
 		JLabel vous = new JLabel("Vous: "+ p.getNom()+" "+p.getPrenom());
-		JLabel pere = new JLabel("Votre père: "+p.getPere());
+		JLabel pere;
+		if ( p.getPere() == null ){
+			pere = new JLabel("Votre père: aucun");
+
+		} else {
+			pere = new JLabel("Votre père: "+p.getPere());
+
+		}
 		JLabel eval = new JLabel("Votre évaluation: "+p.getEvaluation());
 		
 		this.add(vous, gbc);

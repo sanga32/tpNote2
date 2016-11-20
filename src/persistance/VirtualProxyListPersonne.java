@@ -25,8 +25,9 @@ public class VirtualProxyListPersonne implements List<Personne>{
 	public void verifieInitilisation() throws SQLException {
 		if (personnes == null) {
 			personnes = new VirtualProxyListPersonne(id_personne);
-			initialisation();
 		}
+		initialisation();
+
 	}
 	
 	public void initialisation() throws SQLException {
