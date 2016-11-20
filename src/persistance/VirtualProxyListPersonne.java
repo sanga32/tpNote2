@@ -13,7 +13,6 @@ public class VirtualProxyListPersonne implements List<Personne>{
 
 	public VirtualProxyListPersonne(int id_personne) {
 		this.id_personne = id_personne;
-		personnes = new ArrayList<Personne>();
 	}
 	
 	public VirtualProxyListPersonne() {
@@ -23,9 +22,9 @@ public class VirtualProxyListPersonne implements List<Personne>{
 	
 	public void verifieInitilisation() throws SQLException {
 		if (personnes == null) {
-			personnes = new VirtualProxyListPersonne(id_personne);
+			personnes = new ArrayList<Personne>();
+			initialisation();
 		}
-		initialisation();
 
 	}
 	
@@ -40,6 +39,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 
 	@Override
 	public boolean add(Personne e) {
+		try {
+			verifieInitilisation();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		this.personnes.add(e);
 		return true;
 	}
@@ -64,6 +68,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 
 	@Override
 	public void clear() {
+		try {
+			verifieInitilisation();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		personnes.clear();
 	}
 
@@ -81,6 +90,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 
 	@Override
 	public Personne get(int index) {
+		try {
+			verifieInitilisation();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		return personnes.get(index);
 	}
 
@@ -92,6 +106,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 
 	@Override
 	public boolean isEmpty() {
+		try {
+			verifieInitilisation();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		if(personnes.isEmpty())return true;
 		return false;
 	}
@@ -151,6 +170,11 @@ public class VirtualProxyListPersonne implements List<Personne>{
 
 	@Override
 	public int size() {
+		try {
+			verifieInitilisation();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		return personnes.size();
 	}
 

@@ -35,6 +35,17 @@ public class Personne implements IDomainObject {
 		this.fils = new VirtualProxyListPersonne();
 		this.obs = new ArrayList<Observateur>();
 	}
+	
+	public Personne(int id, String nom, String prenom, String evaluation, Personne pere, List<Personne> fils) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.evaluation = evaluation;
+		this.pere = pere;
+		this.fils = fils;
+		this.obs = new ArrayList<Observateur>();
+	}
 
 	public void addFils(Personne p) {
 		fils.add(p);
@@ -50,7 +61,7 @@ public class Personne implements IDomainObject {
 
 	public void setId(int id) {
 		this.id = id;
-		//notifier();
+		notifier();
 	}
 
 	public String getNom() {

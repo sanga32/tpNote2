@@ -20,10 +20,10 @@ public class VirtualProxyPersonne extends Personne{
 	
 	
 	public void verifieInitilisation() throws SQLException {
-		if (personne == null) {
+		if (personne == null && id_personne != 0) {
 			personne = new VirtualProxyPersonne(id_personne);
+			initialisation();
 		}
-		initialisation();
 	}
 	
 	public void initialisation() throws SQLException {
