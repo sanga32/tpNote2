@@ -88,7 +88,12 @@ public class PersonneMapper {
 			ps.setString(1, p.getNom());
 			ps.setString(2, p.getPrenom());
 			ps.setString(3, p.getEvaluation());
-			ps.setInt(4, p.getPere().getId());
+			if (p.getPere() == null) {
+				System.out.println("pere null");
+				ps.setString(5,null);
+			} else {
+				ps.setInt(4, p.getPere().getId());
+			}
 			ps.setInt(5, p.getId());
 			ps.execute();
 			conn.commit();

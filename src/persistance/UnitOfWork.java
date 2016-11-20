@@ -3,7 +3,7 @@ package persistance;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UnitOfWork implements Observateur{
+public class UnitOfWork implements Observateur {
 	Set<IDomainObject> personnes;
 	static UnitOfWork inst = null;
 
@@ -23,8 +23,10 @@ public class UnitOfWork implements Observateur{
 
 	public void commit() {
 		Visiteur v = new Committer();
-		for (IDomainObject o : personnes) {
-			v.visiter(o);
+		if (!personnes.isEmpty()) {
+			for (IDomainObject o : personnes) {
+				v.visiter(o);
+			}
 		}
 		personnes.clear();
 	}

@@ -25,6 +25,7 @@ public class testProxy {
 		for(Personne p : p1.getFils()){
 			System.out.println(p.toString());
 		}
+		UnitOfWork.getInstance().commit();
 	}
 
 }
