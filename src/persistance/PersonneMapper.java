@@ -83,18 +83,13 @@ public class PersonneMapper {
 
 	public void update(Personne p) {
 		try {
-			String req = "UPDATE TPNOTE_personne SET nom=?, prenom=?, evaluation=?, pere=? WHERE id=?";
+			String req = "UPDATE TPNOTE_personne SET nom=?, prenom=?, evaluation=? WHERE id=?";
 			PreparedStatement ps = conn.prepareStatement(req);
 			ps.setString(1, p.getNom());
 			ps.setString(2, p.getPrenom());
 			ps.setString(3, p.getEvaluation());
-			if (p.getPere() == null) {
-				System.out.println("pere null");
-				ps.setString(5,null);
-			} else {
-				ps.setInt(4, p.getPere().getId());
-			}
-			ps.setInt(5, p.getId());
+			
+			ps.setInt(4, p.getId());
 			ps.execute();
 			conn.commit();
 		} catch (SQLException e) {
