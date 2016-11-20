@@ -106,7 +106,7 @@ public class PersonneMapper {
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			Personne p = new Personne();
-			//p.add(UnitOfWork.getInstance());
+			p.add(UnitOfWork.getInstance());
 			p.setId(rs.getInt(1));
 			p.setNom(rs.getString(2));
 			p.setPrenom(rs.getString(3));

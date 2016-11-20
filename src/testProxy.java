@@ -22,6 +22,9 @@ public class testProxy {
 		System.out.println(PersonneMapper.getInstance().findById(1).toString());
 		System.out.println(PersonneMapper.getInstance().findById(2).getPere().toString());
 		System.out.println(PersonneMapper.getInstance().getFilsById(1).get(0).toString());
+		for(Personne p : p1.getFils()){
+			System.out.println(p.toString());
+		}
 	}
 
 }

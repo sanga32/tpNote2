@@ -16,6 +16,8 @@ public class Personne implements IDomainObject {
 	List<Observateur> obs;
 
 	public Personne() {
+		this.fils = new VirtualProxyListPersonne();
+		this.obs = new ArrayList<Observateur>();
 	}
 
 	@Override
@@ -108,8 +110,8 @@ public class Personne implements IDomainObject {
 
 	@Override
 	public void notifier() {
-		//for (Observateur o : obs)
-		//	o.action(this);
+		for (Observateur o : obs)
+			o.action(this);
 	}
 
 	@Override
