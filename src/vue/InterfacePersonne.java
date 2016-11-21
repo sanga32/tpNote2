@@ -20,6 +20,12 @@ import controller.JListListener;
 import controller.ValiderEvaluationListener;
 import domaine.Personne;
 
+/**
+ * Classe InterfacePersonne qui affiche les informations d'une personne 
+ * @author Kevin Delporte, Alexandre Godon, Teddy Lequette
+ *
+ */
+
 @SuppressWarnings("serial")
 public class InterfacePersonne extends JPanel {
 

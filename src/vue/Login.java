@@ -12,6 +12,12 @@ import javax.swing.JTextField;
 
 import controller.ValiderLoginListener;
 
+/**
+ * Classe Login permet la connexion d'un utilisateur 
+ * @author Kevin
+ *
+ */
+
 @SuppressWarnings("serial")
 public class Login extends JPanel{
 

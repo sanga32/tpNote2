@@ -8,6 +8,12 @@ import javax.swing.JTextField;
 
 import domaine.Personne;
 
+/**
+ * Listener du bouton permettant de modifier une évaluation. Ne fait pas la mise à jour en base de données.
+ * @author Kevin
+ *
+ */
+
 public class ValiderEvaluationListener implements ActionListener {
 
 	private JTextField eval;

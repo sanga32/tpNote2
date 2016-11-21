@@ -7,6 +7,12 @@ import javax.swing.JOptionPane;
 
 import persistance.UnitOfWork;
 
+/**
+ * Listener du bouton qui permet de valider les informations et qui déclenche la mise à jour de la base de données
+ * @author Kevin
+ *
+ */
+
 public class EnregListener implements ActionListener {
 
 	@Override

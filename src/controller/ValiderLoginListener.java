@@ -12,6 +12,12 @@ import domaine.Personne;
 import persistance.PersonneMapper;
 import vue.InterfacePersonne;
 
+/**
+ * Listener du bouton permettant de valider le login et d'accéder à la page d'information
+ * @author Kevin
+ *
+ */
+
 public class ValiderLoginListener implements ActionListener{
 
 	private JTextField saisieID;

@@ -7,6 +7,12 @@ import javax.swing.JPanel;
 
 import vue.Login;
 
+/**
+ * Classe listener du bouton annuler qui permet un retour à la page de login
+ * @author Kevin Delporte, Alexandre Godon, Teddy Lequette 
+ *
+ */
+
 public class AnnulerListener implements ActionListener {
 
 	private JPanel j;
@@ -16,6 +22,7 @@ public class AnnulerListener implements ActionListener {
 		this.j = j;
 	}
 
+		
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Login log = new Login();

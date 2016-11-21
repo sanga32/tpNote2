@@ -8,6 +8,12 @@ import javax.swing.event.ListSelectionListener;
 
 import domaine.Personne;
 
+/**
+ * Listener de la JList qui affiche la lisle des fils d'une Personne
+ * @author Kevin Delporte, Alexandre Godon, Teddy Lequette 
+ *
+ */
+
 public class JListListener implements ListSelectionListener {
 
 	private JList<Personne> l;
