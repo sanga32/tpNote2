@@ -29,6 +29,7 @@ public class VirtualProxyPersonne extends Personne{
 	 * @throws SQLException
 	 */
 	public void verifieInitilisation() throws SQLException {
+		// on vérifie id != 0 car c'est ce qui est retourné par la BDD si id est null
 		if (personne == null && id_personne != 0) {
 			personne = new VirtualProxyPersonne(id_personne);
 			initialisation();
