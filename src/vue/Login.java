@@ -18,7 +18,6 @@ public class Login extends JPanel{
 	public Login(){
 
 		super();
-		//this.setPreferredSize(f.getSize());
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = gbc.gridy = 0; // la grille commence en (0, 0)
