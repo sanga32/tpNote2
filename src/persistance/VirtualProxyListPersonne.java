@@ -21,15 +21,14 @@ public class VirtualProxyListPersonne implements List<Personne>{
 
 	/**
 	 * Contructeur du virtualProxyListPersonne qui 
-	 * récupère l'id de la personne
+	 * récupère l'id du père des fils
 	 * @param id_personne
+	 * 				id du père des fils
 	 */
 	public VirtualProxyListPersonne(int id_personne) {
 		this.id_personne = id_personne;
 	}
 	
-	public VirtualProxyListPersonne() {
-	}
 	
 	/**
 	 * On vérifie si on a déja initialisé la liste de fils

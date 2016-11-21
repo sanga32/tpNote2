@@ -9,6 +9,13 @@ import persistance.Observateur;
 import persistance.VirtualProxyListPersonne;
 import persistance.Visiteur;
 
+/**
+ * Définit une personne avec son nom, prenom, un éventuelle pere et évaluation
+ * de ce dernier et de potentielle fils
+ * 
+ * @author Alexandre Godon, Kevin Delporte, Teddy Lequette
+ *
+ */
 public class Personne implements IDomainObject {
 	private int id;
 	private String nom;
@@ -18,14 +25,12 @@ public class Personne implements IDomainObject {
 	private List<Personne> fils;
 	private List<Observateur> obs;
 
+	/**
+	 * constructeur de personne
+	 */
 	public Personne() {
-		this.fils = new VirtualProxyListPersonne();
+		this.fils = new VirtualProxyListPersonne(id);
 		this.obs = new ArrayList<Observateur>();
-	}
-
-	@Override
-	public String toString() {
-		return nom + " " + prenom ;
 	}
 
 	public Personne(int id, String nom, String prenom, String evaluation) {
@@ -35,10 +40,10 @@ public class Personne implements IDomainObject {
 		this.prenom = prenom;
 		this.evaluation = evaluation;
 		this.pere = null;
-		this.fils = new VirtualProxyListPersonne();
+		this.fils = new VirtualProxyListPersonne(id);
 		this.obs = new ArrayList<Observateur>();
 	}
-	
+
 	public Personne(int id, String nom, String prenom, String evaluation, Personne pere, List<Personne> fils) {
 		super();
 		this.id = id;
@@ -50,10 +55,30 @@ public class Personne implements IDomainObject {
 		this.obs = new ArrayList<Observateur>();
 	}
 
+	/**
+	 * @return le nom et prenom de la personne
+	 */
+	@Override
+	public String toString() {
+		return nom + " " + prenom;
+	}
+
+	/**
+	 * ajoute un fils
+	 * 
+	 * @param p
+	 *            le fils à rajouter
+	 */
 	public void addFils(Personne p) {
 		fils.add(p);
 	}
 
+	/**
+	 * supprime un fils
+	 * 
+	 * @param p
+	 *            fils à supprimer
+	 */
 	public void removeFils(Personne p) {
 		this.fils.remove(p);
 	}
@@ -98,7 +123,7 @@ public class Personne implements IDomainObject {
 	public Personne getPere() throws SQLException {
 		return pere.getPersonne();
 	}
-	
+
 	public Personne getPersonne() throws SQLException {
 		return this;
 	}
@@ -116,18 +141,26 @@ public class Personne implements IDomainObject {
 		this.fils = fils;
 		notifier();
 	}
-
+	
+	/**
+	 * ajoute un observeur sur la personne
+	 */
 	@Override
 	public void add(Observateur o) {
 		obs.add(o);
 	}
-
+	/**
+	 * effectue les actions des observeur lors d'une modification de la personne
+	 */
 	@Override
 	public void notifier() {
 		for (Observateur o : obs)
 			o.action(this);
 	}
-
+	
+	/**
+	 * Permet à un visiteur de visiter la personne
+	 */
 	@Override
 	public void accepter(Visiteur v) {
 		v.visiter(this);
