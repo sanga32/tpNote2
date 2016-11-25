@@ -1,6 +1,6 @@
 package settings;
 
 public class Utilisateur {
-	public static String COMPTE = "godona";
-	public static String MDP = "rucies5a";
+	public static String COMPTE = "";
+	public static String MDP = "";
 } 

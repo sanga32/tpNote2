@@ -1,0 +1,5 @@
+La première fenêtre permet de se connecter à l'application, il est nécessaire de saisir un chiffre et que ce dernier soit référencé dans la base de données, sinon il ne sera pas possible de se connecter.
+Une fois connectée un écran affichant les informations de l'utilisateur d'affiche. A partir de cet écran on peut retourner à l'écran de connexion avec le bouton annuler. On peut consulté les fils de l'utilisateur, on également changer son évaluation.
+On à également 2 autres bouton, "Valider" et "Enregistrer les modifs" qui permettent respectivement de sauvegarder dans le programme l'évaluation et d'enregistrer dans les bases de données toutes les modifications apportées.
+
+Afin de pouvoir se connecter, il faut modifier les informations contenues dans les classes Utilisateur.java et ConnectionInfo.java qui contiennent l'url de connection ainsi que le login et le mot de passe.
